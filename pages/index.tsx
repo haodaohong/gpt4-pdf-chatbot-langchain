@@ -129,7 +129,7 @@ export default function Home() {
           </h1>
           <div className=' text-center items-center'>
             <a target='_blank' href='http://www.ssf.gov.cn/portal/rootfiles/2022/01/07/1643159469539952-1643159469560439.pdf'>
-            中华人民共和国民事诉讼法(2021 年修正)
+            中华人民共和国民事诉讼法(2021 年修正) 
             </a>
           </div>
           <main className={styles.main}>
@@ -137,7 +137,7 @@ export default function Home() {
               <div ref={messageListRef} className={styles.messagelist}>
                 {messages.map((message, index) => {
                   let icon;
-                  let className;
+                  let className;  
                   if (message.type === 'apiMessage') {
                     icon = (
                       <Image
