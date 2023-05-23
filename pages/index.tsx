@@ -25,7 +25,7 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: 'Hi, what would you like to learn about this legal case?',
+        message: '你好，你想了解民事诉讼法什么内容？',
         type: 'apiMessage',
       },
     ],
@@ -125,8 +125,13 @@ export default function Home() {
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
           <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center">
-            Chat With Your Legal Docs
+          民事诉讼法查询助手
           </h1>
+          <div className=' text-center items-center'>
+            <a target='_blank' href='http://www.ssf.gov.cn/portal/rootfiles/2022/01/07/1643159469539952-1643159469560439.pdf'>
+            中华人民共和国民事诉讼法(2021 年修正)
+            </a>
+          </div>
           <main className={styles.main}>
             <div className={styles.cloud}>
               <div ref={messageListRef} className={styles.messagelist}>
@@ -188,14 +193,14 @@ export default function Home() {
                               <div key={`messageSourceDocs-${index}`}>
                                 <AccordionItem value={`item-${index}`}>
                                   <AccordionTrigger>
-                                    <h3>Source {index + 1}</h3>
+                                    <h3>匹配 {index + 1}</h3>
                                   </AccordionTrigger>
                                   <AccordionContent>
                                     <ReactMarkdown linkTarget="_blank">
                                       {doc.pageContent}
                                     </ReactMarkdown>
                                     <p className="mt-2">
-                                      <b>Source:</b> {doc.metadata.source}
+                                      <b>索引:</b> {doc.metadata.source}
                                     </p>
                                   </AccordionContent>
                                 </AccordionItem>
@@ -223,8 +228,8 @@ export default function Home() {
                     name="userInput"
                     placeholder={
                       loading
-                        ? 'Waiting for response...'
-                        : 'What is this legal case about?'
+                        ? '正在查询中...'
+                        : '输入你想了解的民事诉讼法信息'
                     }
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -261,9 +266,11 @@ export default function Home() {
           </main>
         </div>
         <footer className="m-auto p-4">
-          <a href="https://twitter.com/mayowaoshin">
-            Powered by LangChainAI. Demo built by Mayo (Twitter: @mayowaoshin).
+          <a href="#">
+            Powered by 新码坊 based on LangChainAI.
           </a>
+
+
         </footer>
       </Layout>
     </>

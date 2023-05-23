@@ -4,6 +4,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { makeChain } from '@/utils/makechain';
 import { pinecone } from '@/utils/pinecone-client';
 import { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } from '@/config/pinecone';
+import { env } from 'process';
 
 export default async function handler(
   req: NextApiRequest,
@@ -30,7 +31,7 @@ export default async function handler(
 
     /* create vectorstore*/
     const vectorStore = await PineconeStore.fromExistingIndex(
-      new OpenAIEmbeddings({}),
+      new OpenAIEmbeddings({},{basePath: process.env.OPENAI_API_BASE_URL}),
       {
         pineconeIndex: index,
         textKey: 'text',
